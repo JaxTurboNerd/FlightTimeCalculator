@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var flightInput = ""
+    @FocusState private var focus: Bool
+    
     var body: some View {
-        Text("Flight Time calculator")
+        VStack{
+            TimeInputView()
+            DisplayTimesView()
+            ButtonView()
+        }.padding()
     }
 }
 
