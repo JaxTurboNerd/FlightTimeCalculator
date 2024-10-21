@@ -12,26 +12,27 @@ struct DisplayTimesView: View {
         Grid{
             GridRow{
                 Text("")
-                Text("PIC")
-                Text("SIC")
-                Text("Crew")
+                Text("PIC").font(.title2)
+                Text("SIC").font(.title2)
+                Text("Crew").font(.title2)
             }
             Divider()
             GridRow{
-                Text("Pilot 1:")
-                ForEach(0..<3) { _ in Text("0.0") }
+                Text("Pilot 1:").font(.title2)
+                ForEach(0..<3) { _ in Text("0.0").font(.title3) }
             }
             .padding(10)
             GridRow{
-                Text("Pilot 2:")
-                ForEach(0..<3) { _ in Text("0.0") }
+                Text("Pilot 2:").font(.title2)
+                ForEach(0..<3) { _ in Text("0.0").font(.title3) }
             }
             .padding(10)
             GridRow{
-                Text("Pilot 3:")
-                ForEach(0..<3) { _ in Text("0.0") }
+                Text("Pilot 3:").font(.title2)
+                ForEach(0..<3) { _ in Text("0.0").font(.title3) }
             }
             .padding(10)
+            Divider()
         }
         .padding()
     }

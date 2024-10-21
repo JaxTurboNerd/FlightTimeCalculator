@@ -18,12 +18,13 @@ struct TimeInputView: View {
                 TextField("0.0", value: $flightInput, formatter: NumberFormatter())
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 60, height: 25)
-                    .onSubmit {
-                    print($flightInput)
-                }
                     .focused($focus)
                     .onAppear{focus = true}
                     .keyboardType(.decimalPad)
+                    .onSubmit {
+                    print($flightInput)
+                }
+
             }
         }
 }
