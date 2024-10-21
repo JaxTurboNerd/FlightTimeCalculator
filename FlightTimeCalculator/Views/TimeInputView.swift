@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TimeInputView: View {
     @State private var flightInput = ""
-    @FocusState private var focus: Bool
+    @FocusState.Binding var isFocused: Bool
     
     var body: some View {
             HStack{
@@ -18,17 +18,13 @@ struct TimeInputView: View {
                 TextField("0.0", value: $flightInput, formatter: NumberFormatter())
                     .textFieldStyle(.roundedBorder)
                     .frame(width: 60, height: 25)
-                    .focused($focus)
-                    .onAppear{focus = true}
+                    .focused($isFocused)
                     .keyboardType(.decimalPad)
-                    .onSubmit {
-                    print($flightInput)
-                }
-
             }
         }
 }
 
 #Preview {
-    TimeInputView()
+    @FocusState.Binding var isFocused = true
+    TimeInputView(isFocused: isFocused)
 }
