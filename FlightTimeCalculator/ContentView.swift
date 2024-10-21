@@ -16,6 +16,7 @@ struct ContentView: View {
         VStack{
             TimeInputView()
             DisplayTimesView()
+            .padding()
             ButtonView()
         }.padding()
     }

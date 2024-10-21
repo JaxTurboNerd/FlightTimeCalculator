@@ -19,17 +19,17 @@ struct DisplayTimesView: View {
             Divider()
             GridRow{
                 Text("Pilot 1:")
-                ForEach(0..<3) { _ in Text("3.5") }
+                ForEach(0..<3) { _ in Text("0.0") }
             }
             .padding(10)
             GridRow{
                 Text("Pilot 2:")
-                ForEach(0..<3) { _ in Text("3.5") }
+                ForEach(0..<3) { _ in Text("0.0") }
             }
             .padding(10)
             GridRow{
                 Text("Pilot 3:")
-                ForEach(0..<3) { _ in Text("3.5") }
+                ForEach(0..<3) { _ in Text("0.0") }
             }
             .padding(10)
         }
