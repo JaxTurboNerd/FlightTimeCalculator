@@ -24,7 +24,7 @@ struct TimeInputView: View {
         }
 }
 
-#Preview {
-    @FocusState.Binding var isFocused = true
-    TimeInputView(isFocused: isFocused)
-}
+//#Preview {
+//    var isFocused = false
+//    TimeInputView(isFocused: isFocused)
+//}

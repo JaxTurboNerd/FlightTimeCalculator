@@ -14,10 +14,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            TimeInputView(isFocused: _focus)
+            TimeInputView(isFocused:$focus)
             DisplayTimesView()
             .padding()
-            ButtonView(isFocused: _focus)
+            ButtonView(isFocused: $focus)
         }.padding()
     }
 }
