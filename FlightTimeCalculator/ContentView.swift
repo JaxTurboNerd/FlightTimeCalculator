@@ -16,7 +16,7 @@ struct ContentView: View {
     var body: some View {
         //Z stack with background styling:
         ZStack {
-            BackgroundView(topColor: .blue, bottomColor: Color("lightBlue"))
+            BackgroundView(topColor: Color("lightBlue"), bottomColor:.blue )
             VStack{
                 TimeInputView(timeInput: $timeInput, isFocused: $isFocused)
                 DisplayTimesView()
@@ -46,7 +46,7 @@ struct TimeInputView: View {
         HStack{
             Text("Flight Time: ")
                 .font(.title) //may need to adjust to slightly smaller font
-            TextField("0.0", value: $timeInput, formatter: NumberFormatter())
+            TextField("  0.0", value: $timeInput, formatter: NumberFormatter())
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, height: 25)
                 .focused($isFocused)
