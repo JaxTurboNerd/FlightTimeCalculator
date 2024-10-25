@@ -28,7 +28,7 @@ struct ButtonView: View {
             Button("Calculate") {
                 //Code to calculate the times:
                 self.isPressed.toggle()
-                isFocused.toggle() //dismissed the keyboard
+                isFocused.toggle() //dismisses the keyboard
             }
             .frame(width: 140, height: 45) //button size
             .font(.title3)
