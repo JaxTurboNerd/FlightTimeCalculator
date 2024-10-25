@@ -10,7 +10,7 @@ import SwiftUI
 final class FlightTimesViewModel: ObservableObject {
     @Published var pilotTimes: Pilot?
     
-    func calculateTimes(flightTime: Double) -> (time1: String, time2: String, time3: String) {
+    func calculateTimes(flightTime: Double) -> (pilotOneTimes: Pilot, pilotTwoTimes: Pilot, pilotThreeTimes: Pilot) {
         
         //convert flightTime to type Int
         let intFlightTime = Int(flightTime * 10)
@@ -37,7 +37,11 @@ final class FlightTimesViewModel: ObservableObject {
         let time2 = String(Double(intTime2)/10)
         let time3 = String(Double(intTime3)/10)
         
-        return(time1, time2, time3)
+        let pilotOne = Pilot(pic: time1, sic: time2, crew: time3)
+        let pilotTwo = Pilot(pic: time2, sic: time3, crew: time1)
+        let pilotThree = Pilot(pic: time3, sic: time1, crew: time2)
+        
+        return(pilotOne, pilotTwo, pilotThree)
     }
 
 }
