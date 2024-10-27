@@ -10,6 +10,7 @@ import SwiftUI
 struct ButtonView: View {
     @Binding var isPressed: Bool
     @FocusState.Binding var isFocused: Bool
+    @StateObject var viewModel = FlightTimesViewModel()
     
     var body: some View {
         HStack(spacing: 50){
