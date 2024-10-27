@@ -29,9 +29,8 @@ struct ButtonView: View {
             
             Button("Calculate") {
                 //self.isPressed.toggle()
-                //Code to calculate the times:
-                viewModel.calcTimeValues(flightTime: timeInput)
-                //viewModel.calculateTimes(flightTime: timeInput)
+                //Function to calculate the times:
+                viewModel.calculateTimes(flightTime: timeInput)
                 isFocused.toggle() //dismisses the keyboard
             }
             .frame(width: 140, height: 45) //button size
