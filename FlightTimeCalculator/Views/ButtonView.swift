@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ButtonView: View {
-    @Binding var isPressed: Bool
+    @Binding var timeInput: String
     @FocusState.Binding var isFocused: Bool
     @StateObject var viewModel = FlightTimesViewModel()
     
@@ -16,6 +16,7 @@ struct ButtonView: View {
         HStack(spacing: 50){
             Button("Clear") {
                 //Code to clear the text input:
+                timeInput = ""
             }
             .frame(width: 140, height: 45)
             .font(.title3)
@@ -23,12 +24,14 @@ struct ButtonView: View {
             .foregroundStyle(.white)
             .cornerRadius(10)
             .shadow(color: .gray, radius: 2, x: 2, y: 2)
-            .opacity(isPressed ? 0.8: 1.0)
-            .animation(.easeInOut, value: isPressed)
+//            .opacity(shouldClear ? 0.8: 1.0)
+//            .animation(.easeInOut(duration: 1.0), value: shouldClear)
             
             Button("Calculate") {
+                //self.isPressed.toggle()
                 //Code to calculate the times:
-                self.isPressed.toggle()
+                viewModel.calcTimeValues(flightTime: timeInput)
+                //viewModel.calculateTimes(flightTime: timeInput)
                 isFocused.toggle() //dismisses the keyboard
             }
             .frame(width: 140, height: 45) //button size
@@ -37,12 +40,12 @@ struct ButtonView: View {
             .foregroundStyle(.white)
             .cornerRadius(10)
             .shadow(color: .gray, radius: 2, x: 2, y: 2)
-            .opacity(isPressed ? 0.8: 1.0)
-            .animation(.easeInOut, value: isPressed)
+//            .opacity(isPressed ? 0.8: 1.0)
+//            .animation(.easeInOut, value: isPressed)
         }
     }
 }
 
 #Preview {
-    ButtonView(isPressed: .constant(false), isFocused: FocusState<Bool>().projectedValue)
+    ButtonView(timeInput: .constant("5.5"), isFocused: FocusState<Bool>().projectedValue)
 }

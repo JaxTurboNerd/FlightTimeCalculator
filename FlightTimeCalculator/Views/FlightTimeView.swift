@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlightTimeView: View {
-    //connects to the model to this view:
+    //connects to the published viewModel variable:
     @StateObject var viewModel = FlightTimesViewModel()
     
     var body: some View {

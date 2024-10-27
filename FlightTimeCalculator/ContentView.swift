@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var timeInput = ""
-    @State var isPressed = false
     @FocusState var isFocused: Bool
     
     var body: some View {
@@ -20,7 +19,7 @@ struct ContentView: View {
             VStack{
                 TimeInputView(timeInput: $timeInput, isFocused: $isFocused)
                 FlightTimeView()
-                ButtonView(isPressed: $isPressed, isFocused: $isFocused)
+                ButtonView(timeInput: $timeInput, isFocused: $isFocused)
             }.padding()
         }
     }
@@ -40,5 +39,5 @@ struct BackgroundView: View {
 }
 
 #Preview {
-    ContentView(timeInput: "5.5", isPressed: false)
+    ContentView(timeInput: "5.5")
 }
