@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var timeInput = ""
     @FocusState var isFocused: Bool
+    //This passes down the state of the observed object:
     @StateObject var flightTime = FlightTimesViewModel()
     
     var body: some View {

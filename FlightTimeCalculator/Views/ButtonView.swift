@@ -10,7 +10,6 @@ import SwiftUI
 struct ButtonView: View {
     @Binding var timeInput: String
     @FocusState.Binding var isFocused: Bool
-    //@StateObject var viewModel = FlightTimesViewModel()
     @ObservedObject var flightTimes: FlightTimesViewModel
     
 //    func calculateTimes(flightTime: String){
