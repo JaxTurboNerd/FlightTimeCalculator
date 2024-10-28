@@ -31,8 +31,6 @@ struct FlightTimeView: View {
             .padding(10)
             GridRow{
                 Text("Pilot 2:").font(.title2)
-//                ForEach(pilot2Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
-//                }
                 Text(flightTimes.pilotTimes[1].pic).font(.title3)
                 Text(flightTimes.pilotTimes[1].sic).font(.title3)
                 Text(flightTimes.pilotTimes[1].crew).font(.title3)
@@ -40,8 +38,6 @@ struct FlightTimeView: View {
             .padding(10)
             GridRow{
                 Text("Pilot 3:").font(.title2)
-//                ForEach(pilot3Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
-//                }
                 Text(flightTimes.pilotTimes[2].pic).font(.title3)
                 Text(flightTimes.pilotTimes[2].sic).font(.title3)
                 Text(flightTimes.pilotTimes[2].crew).font(.title3)
