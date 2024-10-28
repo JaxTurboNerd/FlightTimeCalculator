@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var timeInput = ""
     @FocusState var isFocused: Bool
+    @StateObject var flightTime = FlightTimesViewModel()
     
     var body: some View {
         //Z stack with background styling:
@@ -18,8 +19,8 @@ struct ContentView: View {
             BackgroundView(topColor: colorScheme == .dark ? Color("darkTop") : Color("lightBlue"), bottomColor: colorScheme == .dark ? .black: .blue )
             VStack{
                 TimeInputView(timeInput: $timeInput, isFocused: $isFocused)
-                FlightTimeView()
-                ButtonView(timeInput: $timeInput, isFocused: $isFocused)
+                FlightTimeView(flightTimes: flightTime)
+                ButtonView(timeInput: $timeInput, isFocused: $isFocused, flightTimes: flightTime)
             }.padding()
         }
     }

@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 final class FlightTimesViewModel: ObservableObject {
-    @Published var pilotTimes: [Pilot]?
+    @Published var pilotTimes = [Pilot(pic: "0.0", sic: "0.0", crew: "0.0"), Pilot(pic: "0.0", sic: "0.0", crew: "0.0"), Pilot(pic: "0.0", sic: "0.0", crew: "0.0")]
     
     func calculateTimes(flightTime: String){
         
@@ -45,6 +45,5 @@ final class FlightTimesViewModel: ObservableObject {
         let pilotThree = Pilot(pic: time3, sic: time1, crew: time2)
         
         pilotTimes = [pilotOne, pilotTwo, pilotThree]
-        print(pilotTimes!)
     }
 }

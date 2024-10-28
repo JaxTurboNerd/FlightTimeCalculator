@@ -9,7 +9,8 @@ import SwiftUI
 
 struct FlightTimeView: View {
     //connects to the published viewModel variable:
-    @StateObject var viewModel = FlightTimesViewModel()
+    //@StateObject var viewModel = FlightTimesViewModel()
+    @ObservedObject var flightTimes: FlightTimesViewModel
     
     var body: some View {
         Grid{
@@ -24,27 +25,27 @@ struct FlightTimeView: View {
                 Text("Pilot 1:").font(.title2)
 //                ForEach(pilot1Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
 //                }
-                Text(MockData.samplePilot.pic).font(.title3)
-                Text(MockData.samplePilot.sic).font(.title3)
-                Text(MockData.samplePilot.crew).font(.title3)
+                Text(flightTimes.pilotTimes[0].pic).font(.title3)
+                Text(flightTimes.pilotTimes[0].sic).font(.title3)
+                Text(flightTimes.pilotTimes[0].crew).font(.title3)
             }
             .padding(10)
             GridRow{
                 Text("Pilot 2:").font(.title2)
 //                ForEach(pilot2Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
 //                }
-                Text(MockData.samplePilot.sic).font(.title3)
-                Text(MockData.samplePilot.crew).font(.title3)
-                Text(MockData.samplePilot.pic).font(.title3)
+                Text(flightTimes.pilotTimes[1].pic).font(.title3)
+                Text(flightTimes.pilotTimes[1].sic).font(.title3)
+                Text(flightTimes.pilotTimes[1].crew).font(.title3)
             }
             .padding(10)
             GridRow{
                 Text("Pilot 3:").font(.title2)
 //                ForEach(pilot3Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
 //                }
-                Text(MockData.samplePilot.crew).font(.title3)
-                Text(MockData.samplePilot.pic).font(.title3)
-                Text(MockData.samplePilot.sic).font(.title3)
+                Text(flightTimes.pilotTimes[2].pic).font(.title3)
+                Text(flightTimes.pilotTimes[2].sic).font(.title3)
+                Text(flightTimes.pilotTimes[2].crew).font(.title3)
             }
             .padding(10)
             Divider()
@@ -54,5 +55,5 @@ struct FlightTimeView: View {
 }
 
 #Preview {
-    FlightTimeView()
+    FlightTimeView(flightTimes: FlightTimesViewModel())
 }
