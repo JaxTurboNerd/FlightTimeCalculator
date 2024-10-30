@@ -16,6 +16,7 @@ struct TimeInputView: View {
     var body: some View {
         HStack{
             Text("Flight Time: ")
+                .foregroundStyle(Color("textColor"))
                 .font(.title) //may need to adjust to slightly smaller font
             //            TextField("  0.0", value: $timeInput, formatter: NumberFormatter())
             //                .textFieldStyle(.roundedBorder)
@@ -32,6 +33,7 @@ struct TimeInputView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, height: 25)
                 .focused($isFocused)
+                .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
                     if newValue.count > characterLimit {

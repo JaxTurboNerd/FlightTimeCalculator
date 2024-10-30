@@ -11,6 +11,7 @@ struct ButtonView: View {
     @Binding var timeInput: String
     @FocusState.Binding var isFocused: Bool
     @ObservedObject var flightTimes: FlightTimesViewModel
+    @Environment(\.colorScheme) var colorScheme
     
 //    func calculateTimes(flightTime: String){
 //        
@@ -58,10 +59,11 @@ struct ButtonView: View {
             }
             .frame(width: 140, height: 45)
             .font(.title3)
-            .background(.blue)
-            .foregroundStyle(.white)
+            //.background(.blue)
+            .background(Color("clearButtonColor"))
+            .foregroundStyle(Color("buttonFont"))
             .cornerRadius(10)
-            .shadow(color: .gray, radius: 2, x: 2, y: 2)
+            .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
 //            .opacity(shouldClear ? 0.8: 1.0)
 //            .animation(.easeInOut(duration: 1.0), value: shouldClear)
             
@@ -73,10 +75,10 @@ struct ButtonView: View {
             }
             .frame(width: 140, height: 45) //button size
             .font(.title3)
-            .background(.green)
-            .foregroundStyle(.white)
+            .background(Color("calcButtonColor"))
+            .foregroundStyle(Color("buttonFont"))
             .cornerRadius(10)
-            .shadow(color: .gray, radius: 2, x: 2, y: 2)
+            .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
 //            .opacity(isPressed ? 0.8: 1.0)
 //            .animation(.easeInOut, value: isPressed)
         }

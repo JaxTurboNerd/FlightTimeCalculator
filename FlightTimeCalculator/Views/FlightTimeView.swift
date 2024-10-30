@@ -15,32 +15,32 @@ struct FlightTimeView: View {
         Grid{
             GridRow{
                 Text("")
-                Text("PIC").font(.title2)
-                Text("SIC").font(.title2)
-                Text("Crew").font(.title2)
+                Text("PIC").font(.title2).foregroundStyle(Color("textColor"))
+                Text("SIC").font(.title2).foregroundStyle(Color("textColor"))
+                Text("Crew").font(.title2).foregroundStyle(Color("textColor"))
             }
             Divider()
             GridRow{
                 Text("Pilot 1:").font(.title2)
 //                ForEach(pilot1Times, id: \.self){time in Text("\(time, specifier: "%.1f")").font(.title3)
 //                }
-                Text(flightTimes.pilotTimes[0].pic).font(.title3)
-                Text(flightTimes.pilotTimes[0].sic).font(.title3)
-                Text(flightTimes.pilotTimes[0].crew).font(.title3)
+                Text(flightTimes.pilotTimes[0].pic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[0].sic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[0].crew).font(.title3).foregroundStyle(Color("textColor"))
             }
             .padding(10)
             GridRow{
                 Text("Pilot 2:").font(.title2)
-                Text(flightTimes.pilotTimes[1].pic).font(.title3)
-                Text(flightTimes.pilotTimes[1].sic).font(.title3)
-                Text(flightTimes.pilotTimes[1].crew).font(.title3)
+                Text(flightTimes.pilotTimes[1].pic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[1].sic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[1].crew).font(.title3).foregroundStyle(Color("textColor"))
             }
             .padding(10)
             GridRow{
                 Text("Pilot 3:").font(.title2)
-                Text(flightTimes.pilotTimes[2].pic).font(.title3)
-                Text(flightTimes.pilotTimes[2].sic).font(.title3)
-                Text(flightTimes.pilotTimes[2].crew).font(.title3)
+                Text(flightTimes.pilotTimes[2].pic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[2].sic).font(.title3).foregroundStyle(Color("textColor"))
+                Text(flightTimes.pilotTimes[2].crew).font(.title3).foregroundStyle(Color("textColor"))
             }
             .padding(10)
             Divider()
