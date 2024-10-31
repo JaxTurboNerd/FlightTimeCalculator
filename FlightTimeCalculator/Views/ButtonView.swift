@@ -54,8 +54,9 @@ struct ButtonView: View {
     var body: some View {
         HStack(spacing: 50){
             Button("Clear") {
-                //Code to clear the text input:
+                //Code to clear the text and result input:
                 timeInput = ""
+                flightTimes.calculateTimes(flightTime: "0.0")
             }
             .frame(width: 140, height: 45)
             .font(.title3)

@@ -39,7 +39,20 @@ struct TimeInputView: View {
                     if newValue.count > characterLimit {
                         timeInput = String(newValue.prefix(characterLimit))
                     }
+                    if Double(newValue) ?? 0.0 > 20.0{
+                        timeInput = "20.0"
+                    }
                 }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard, content: {
+                        Button(action: {timeInput = ""}, label: {Text("Clear")}
+                        )
+                        Spacer()
+                        Button(action: {isFocused = false}, label: {Text("Done")}
+                        )
+                    })
+                }
+            Image(systemName: "airplane").font(.title2)
         }
     }
 }
