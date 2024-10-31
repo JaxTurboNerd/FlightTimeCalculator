@@ -28,18 +28,11 @@ struct ContentView: View {
 }
 
 struct BackgroundView: View {
-//    var topColor: Color
-//    var bottomColor: Color
     
     var body: some View {
         Color("lightGrey")
             .ignoresSafeArea(.all)
             .opacity(0.9)
-//        LinearGradient(gradient: Gradient(colors: [topColor, bottomColor]),
-//                       startPoint: .topLeading,
-//                       endPoint: .bottomTrailing)
-//        .ignoresSafeArea(.all)
-//        .opacity(0.9)
     }
 }
 
