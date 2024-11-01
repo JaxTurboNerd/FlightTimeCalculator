@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimeInputView: View {
-    @Environment(\.colorScheme) var colorScheme
+    //@Environment(\.colorScheme) var colorScheme
     @Binding var timeInput: String
     //@FocusState.Binding var isFocused: Bool
     private let characterLimit = 4

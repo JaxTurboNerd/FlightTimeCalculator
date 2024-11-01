@@ -47,3 +47,14 @@ final class FlightTimesViewModel: ObservableObject {
         pilotTimes = [pilotOne, pilotTwo, pilotThree]
     }
 }
+
+final class NumbersOnly: ObservableObject {
+    @Published var inputValue = "" {
+        didSet {
+            let filtered = inputValue.filter {$0.isNumber} //need to filter decimal
+            if inputValue != filtered {
+                inputValue = filtered
+            }
+        }
+    }
+}

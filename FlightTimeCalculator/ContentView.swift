@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.colorScheme) var colorScheme
+    //@Environment(\.colorScheme) var colorScheme
     @State var timeInput = ""
     @FocusState var isFocused: Bool
     //This passes the state of the observed object:
