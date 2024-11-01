@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TimeInputView: View {
-    //@Environment(\.colorScheme) var colorScheme
     @Binding var timeInput: String
-    //@FocusState.Binding var isFocused: Bool
     private let characterLimit = 4
     
     var body: some View {
@@ -32,7 +30,6 @@ struct TimeInputView: View {
             TextField(" 0.0", text: $timeInput)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, height: 25)
-                //.focused($isFocused)
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
@@ -57,14 +54,6 @@ struct TimeInputView: View {
         }
     }
     
-//    func dismissKeyboard() {
-//        let keyWindow = UIApplication.shared.connectedScenes
-//                .filter({$0.activationState == .foregroundActive})
-//                .compactMap({$0 as? UIWindowScene})
-//                .first?.windows
-//                .filter({$0.isKeyWindow}).first
-//        keyWindow?.endEditing(true)
-//    }
 }
 
 #Preview {
