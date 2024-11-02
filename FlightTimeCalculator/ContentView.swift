@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         //Z stack with background styling:
         ZStack {
-            BackgroundView()
+            BackgroundView()//applies background styling
             VStack(spacing: 40){
                 TimeInputView(timeInput: $timeInput)
                 FlightTimeView(flightTimes: flightTime)
@@ -33,9 +33,8 @@ struct ContentView: View {
 struct BackgroundView: View {
     
     var body: some View {
-        Color("lightGrey")
+        Color("lightGrey")//custom color with dark mode support
             .ignoresSafeArea(.all)
-            .opacity(0.9)
     }
 }
 
