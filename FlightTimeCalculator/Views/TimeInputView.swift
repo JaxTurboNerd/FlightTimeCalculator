@@ -22,10 +22,16 @@ struct TimeInputView: View {
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
+                    //Allow only numbers and a decimal character
                     let filtered = timeInput.filter {".0123456789".contains($0)}
                     if newValue != filtered {
                         timeInput = filtered
                     }
+                    //Allow only one decimal character:
+                    if newValue.components(separatedBy: ".").count-1 > 1 {
+                        timeInput = String(newValue.dropLast())
+                    }
+                    //Allow a maximum of 4 characters:
                     if newValue.count > characterLimit {
                         timeInput = String(newValue.prefix(characterLimit))
                     }
