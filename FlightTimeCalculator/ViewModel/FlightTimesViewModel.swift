@@ -52,10 +52,20 @@ final class FlightTimesViewModel: ObservableObject {
 final class ValidTime: ObservableObject {
     @Published var inputValue = "" {
         didSet {
-            let filtered = inputValue.filter {$0.isNumber} //need to filter decimal
+            print("input value: \(inputValue)")
+            let filtered = inputValue.filter {".0123456789".contains($0)}
+            print("filtered value: \(filtered)")
             if inputValue != filtered {
-                inputValue = filtered
+                print("input does not match filtered")
+                return inputValue = filtered
+            }
+            
+            //Allow only one decimal character:
+            if inputValue.components(separatedBy: ".").count-1 > 1 {
+                print("found more than one decimal")
+                return inputValue = String(inputValue.dropLast())
             }
         }
     }
+    
 }

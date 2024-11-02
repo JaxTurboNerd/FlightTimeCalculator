@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     //@Environment(\.colorScheme) var colorScheme
-    @State var timeInput = ""
+    //@State var timeInput = ""
+    @StateObject var timeInput = ValidTime()
     @FocusState var isFocused: Bool
     //This passes the state of the observed object:
     @StateObject var flightTime = FlightTimesViewModel()
@@ -19,9 +20,9 @@ struct ContentView: View {
         ZStack {
             BackgroundView()//applies background styling
             VStack(spacing: 40){
-                TimeInputView(timeInput: $timeInput)
-                FlightTimeView(flightTimes: flightTime)
-                ButtonView(timeInput: $timeInput, isFocused: $isFocused, flightTimes: flightTime)
+                TimeInputView(timeInput: timeInput)
+//                FlightTimeView(flightTimes: flightTime)
+//                ButtonView(timeInput: $timeInput, isFocused: $isFocused, flightTimes: flightTime)
             }.padding()
         }
         .onTapGesture {
@@ -39,5 +40,5 @@ struct BackgroundView: View {
 }
 
 #Preview {
-    ContentView(timeInput: "5.5")
+    ContentView()
 }
