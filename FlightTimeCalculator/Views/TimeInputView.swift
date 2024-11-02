@@ -9,7 +9,17 @@ import SwiftUI
 
 struct TimeInputView: View {
     @Binding var timeInput: String
+    @State private var showAlert = false
     private let characterLimit = 4
+    private var timeIsValid: Bool {
+        //checks for valid double:
+        let time = Double(timeInput) ?? 0.0
+        guard time >= 0.0 && time < 99.9 else {
+            showAlert = true
+            return false
+        }
+        return true
+    }
     
     var body: some View {
         HStack{
@@ -35,6 +45,9 @@ struct TimeInputView: View {
                     if newValue.count > characterLimit {
                         timeInput = String(newValue.prefix(characterLimit))
                     }
+                    if !timeIsValid {
+                        timeInput = "99.9"
+                    }
 //                    if Double(newValue) ?? 0.0 > 20.0{
 //                        timeInput = "20.0"
 //                    }
@@ -48,6 +61,8 @@ struct TimeInputView: View {
                                label: {Text("Done")}
                         )
                     })
+                }
+                .alert("Please check your entered time!", isPresented: $showAlert){Button("OK", role: .cancel){}
                 }
             Image(systemName: "airplane").font(.title2)
         }
