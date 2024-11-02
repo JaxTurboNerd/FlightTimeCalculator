@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TimeInputView: View {
-    @Binding var timeInput: String
+    //@Binding var timeInput: String
+    @ObservedObject var inputTime: NumbersOnly
     private let characterLimit = 4
     
     var body: some View {
@@ -27,22 +28,27 @@ struct TimeInputView: View {
             //                        timeInput = String(newValue.prefix(characterLimit))
             //                    }
             //                }
-            TextField(" 0.0", text: $timeInput)
+            TextField(" 0.0", text: $inputTime.inputValue)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, height: 25)
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
-                .onChange(of: timeInput){newValue in
+                .onChange(of: inputTime.inputValue){newValue in
+                    let filtered = inputTime.inputValue.filter {".0123456789".contains($0)}
                     if newValue.count > characterLimit {
-                        timeInput = String(newValue.prefix(characterLimit))
+                        inputTime.inputValue = String(newValue.prefix(characterLimit))
                     }
-                    if Double(newValue) ?? 0.0 > 20.0{
-                        timeInput = "20.0"
+                    
+                    if newValue != filtered {
+                        inputTime.inputValue = filtered
                     }
+//                    if Double(newValue) ?? 0.0 > 20.0{
+//                        inputTime = "20.0"
+//                    }
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard, content: {
-                        Button(action: {timeInput = ""}, label: {Text("Clear")}
+                        Button(action: {inputTime.inputValue = ""}, label: {Text("Clear")}
                         )
                         Spacer()
                         Button(action: {self.dismissKeyboard()},
@@ -57,6 +63,6 @@ struct TimeInputView: View {
 }
 
 #Preview {
-    TimeInputView(timeInput: .constant("0.0"))
+    TimeInputView(inputTime: NumbersOnly())
 //    TimeInputView(timeInput: .constant("0.0"), isFocused: FocusState<Bool>().projectedValue)
 }

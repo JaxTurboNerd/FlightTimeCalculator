@@ -51,7 +51,7 @@ final class FlightTimesViewModel: ObservableObject {
 final class NumbersOnly: ObservableObject {
     @Published var inputValue = "" {
         didSet {
-            let filtered = inputValue.filter {$0.isNumber} //need to filter decimal
+            let filtered = inputValue.filter {".0123456789".contains($0)}
             if inputValue != filtered {
                 inputValue = filtered
             }
