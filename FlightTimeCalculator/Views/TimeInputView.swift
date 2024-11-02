@@ -33,12 +33,16 @@ struct TimeInputView: View {
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
+                    let filtered = timeInput.filter {".0123456789".contains($0)}
+                    if newValue != filtered {
+                        timeInput = filtered
+                    }
                     if newValue.count > characterLimit {
                         timeInput = String(newValue.prefix(characterLimit))
                     }
-                    if Double(newValue) ?? 0.0 > 20.0{
-                        timeInput = "20.0"
-                    }
+//                    if Double(newValue) ?? 0.0 > 20.0{
+//                        timeInput = "20.0"
+//                    }
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard, content: {
