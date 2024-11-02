@@ -19,7 +19,6 @@ struct ContentView: View {
         ZStack {
             BackgroundView()
             VStack(spacing: 40){
-                //TimeInputView(timeInput: $timeInput, isFocused: $isFocused)
                 TimeInputView(timeInput: $timeInput)
                 FlightTimeView(flightTimes: flightTime)
                 ButtonView(timeInput: $timeInput, isFocused: $isFocused, flightTimes: flightTime)

@@ -16,17 +16,6 @@ struct TimeInputView: View {
             Text("Flight Time: ")
                 .foregroundStyle(Color("textColor"))
                 .font(.title) //may need to adjust to slightly smaller font
-            //            TextField("  0.0", value: $timeInput, formatter: NumberFormatter())
-            //                .textFieldStyle(.roundedBorder)
-            //                .frame(width: 60, height: 25)
-            //                .focused($isFocused)
-            //                .keyboardType(.decimalPad)
-            //                .onChange(of: timeInput){newValue in  //not working on the sim
-            //                    print("onChange modifier in action")
-            //                   if newValue.count > characterLimit {
-            //                        timeInput = String(newValue.prefix(characterLimit))
-            //                    }
-            //                }
             TextField(" 0.0", text: $timeInput)
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 60, height: 25)
