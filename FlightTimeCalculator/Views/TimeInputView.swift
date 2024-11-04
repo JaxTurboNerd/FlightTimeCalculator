@@ -11,10 +11,18 @@ struct TimeInputView: View {
     @Binding var timeInput: String
     @State private var showAlert = false
     private let characterLimit = 4
+    @State private var alertText = ""
+    
     private var timeIsValid: Bool {
         //checks for valid double:
         let time = Double(timeInput) ?? 0.0
-        guard time >= 0.0 && time < 99.9 else {
+        guard time < 99.9 else {
+            alertText = "A flight time greater than 99.9 hours was entered! Please check your entry!"
+            showAlert = true
+            return false
+        }
+        guard time >= 0.0 else {
+            alertText = "Please enter a value greater than 0.0"
             showAlert = true
             return false
         }
@@ -46,11 +54,8 @@ struct TimeInputView: View {
                         timeInput = String(newValue.prefix(characterLimit))
                     }
                     if !timeIsValid {
-                        timeInput = "99.9"
+                        timeInput = "0.0"
                     }
-//                    if Double(newValue) ?? 0.0 > 20.0{
-//                        timeInput = "20.0"
-//                    }
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard, content: {
@@ -62,7 +67,7 @@ struct TimeInputView: View {
                         )
                     })
                 }
-                .alert("Please check your entered time!", isPresented: $showAlert){Button("OK", role: .cancel){}
+                .alert(alertText, isPresented: $showAlert){Button("OK", role: .cancel){}
                 }
             Image(systemName: "airplane").font(.title2)
         }
@@ -72,5 +77,4 @@ struct TimeInputView: View {
 
 #Preview {
     TimeInputView(timeInput: .constant("0.0"))
-//    TimeInputView(timeInput: .constant("0.0"), isFocused: FocusState<Bool>().projectedValue)
 }

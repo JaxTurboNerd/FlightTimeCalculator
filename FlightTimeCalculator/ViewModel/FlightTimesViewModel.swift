@@ -13,7 +13,7 @@ final class FlightTimesViewModel: ObservableObject {
     func calculateTimes(flightTime: String){
         
         //Need to cast flightTime: String to Double:
-        let doubleTime = Double(flightTime) ?? 0.0
+         let doubleTime = Double(flightTime) ?? 0.0
         
         //convert flightTime to type Int
         let intFlightTime = Int(doubleTime * 10)
