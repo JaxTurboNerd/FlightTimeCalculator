@@ -10,8 +10,8 @@ import Testing
 
 struct FlightTimeCalculatorTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test("Checks the flight time calculations") func flightTime(){
+      
     }
 
 }
