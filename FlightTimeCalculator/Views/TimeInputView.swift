@@ -41,21 +41,25 @@ struct TimeInputView: View {
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
                     //Allow only numbers and a decimal character
-                    let filtered = timeInput.filter {".0123456789".contains($0)}
-                    if newValue != filtered {
-                        timeInput = filtered
-                    }
+//                    let filtered = timeInput.filter {".0123456789".contains($0)}
+//                    if newValue != filtered {
+//                        timeInput = filtered
+//                    }
                     //Allow only one decimal character:
                     if newValue.components(separatedBy: ".").count-1 > 1 {
                         timeInput = String(newValue.dropLast())
                     }
                     //Allow a maximum of 4 characters:
-                    if newValue.count > characterLimit {
-                        timeInput = String(newValue.prefix(characterLimit))
+//                    if newValue.count > characterLimit {
+//                        timeInput = String(newValue.prefix(characterLimit))
+//                    }
+                    if !isValidNumber(newValue) {
+                        // Keep only valid characters
+                        timeInput = String(newValue.prefix(4).filter { $0.isNumber || $0 == "." })
                     }
-                    if !timeIsValid {
-                        timeInput = "0.0"
-                    }
+//                    if !timeIsValid {
+//                        timeInput = "0.0"
+//                    }
                 }
                 .toolbar {
                     ToolbarItemGroup(placement: .keyboard, content: {
@@ -72,6 +76,10 @@ struct TimeInputView: View {
             Image(systemName: "airplane").font(.title2)
         }
     }
+    func isValidNumber(_ input: String) -> Bool {
+            let regex = #"^\d{0,2}(\.{0}\d{0,1})?$"#
+            return input.range(of: regex, options: .regularExpression) != nil
+        }
     
 }
 
