@@ -40,23 +40,24 @@ struct TimeInputView: View {
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
-                    //Allow only numbers and a decimal character
-//                    let filtered = timeInput.filter {".0123456789".contains($0)}
-//                    if newValue != filtered {
-//                        timeInput = filtered
-//                    }
-                    //Allow only one decimal character:
-                    if newValue.components(separatedBy: ".").count-1 > 1 {
-                        timeInput = String(newValue.dropLast())
-                    }
-                    //Allow a maximum of 4 characters:
-//                    if newValue.count > characterLimit {
-//                        timeInput = String(newValue.prefix(characterLimit))
-//                    }
+                    //print(newValue.components(separatedBy: "."))
                     if !isValidNumber(newValue) {
-                        // Keep only valid characters
+                        // Prefix sets the total allowed characters
                         timeInput = String(newValue.prefix(4).filter { $0.isNumber || $0 == "." })
                     }
+                    //Allow only one decimal character:
+                    if newValue.components(separatedBy: ".").count > 2 {
+                        timeInput = String(newValue.dropLast())
+                    }
+                    //Allow only 1 digit after the decimal:
+                    if newValue.components(separatedBy: ".").count >= 2 {
+                        //use the second index of the components array  to check the decimals:
+                        let decimals = newValue.components(separatedBy: ".")[1]
+                        if decimals.count >= 2 {
+                            timeInput = String(newValue.dropLast())
+                        }
+                    }
+                    
 //                    if !timeIsValid {
 //                        timeInput = "0.0"
 //                    }
@@ -77,7 +78,7 @@ struct TimeInputView: View {
         }
     }
     func isValidNumber(_ input: String) -> Bool {
-            let regex = #"^\d{0,2}(\.{0}\d{0,1})?$"#
+            let regex = #"^\d{0,2}(\.[0-9]{0,1})?$"#
             return input.range(of: regex, options: .regularExpression) != nil
         }
     
