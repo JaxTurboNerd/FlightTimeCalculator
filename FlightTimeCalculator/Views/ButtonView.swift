@@ -12,6 +12,7 @@ struct ButtonView: View {
     @FocusState.Binding var isFocused: Bool
     @ObservedObject var flightTimes: FlightTimesViewModel
     @Environment(\.colorScheme) var colorScheme
+    @State private var showAlert = false
     
     var body: some View {
         HStack(spacing: 50){
@@ -22,16 +23,15 @@ struct ButtonView: View {
             }
             .frame(width: 140, height: 45)
             .font(.title3)
-            //.background(.blue)
             .background(Color("clearButtonColor"))
             .foregroundStyle(Color("buttonFont"))
             .cornerRadius(10)
             .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
-//            .opacity(shouldClear ? 0.8: 1.0)
-//            .animation(.easeInOut(duration: 1.0), value: shouldClear)
-            
             Button("Calculate") {
-                //self.isPressed.toggle()
+                if timeInput == "" {
+                    showAlert = true
+                    return
+                }
                 //Function to calculate the times:
                 flightTimes.calculateTimes(flightTime: timeInput)
                 isFocused.toggle() //dismisses the keyboard
@@ -42,13 +42,11 @@ struct ButtonView: View {
             .foregroundStyle(Color("buttonFont"))
             .cornerRadius(10)
             .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
-//            .opacity(isPressed ? 0.8: 1.0)
-//            .animation(.easeInOut, value: isPressed)
+        }
+        .alert("Please enter a flight time", isPresented: $showAlert){Button("OK", role: .cancel){}
         }
     }
 }
-
-
 
 #Preview {
     ButtonView(timeInput: .constant("5.5"), isFocused: FocusState<Bool>().projectedValue, flightTimes: FlightTimesViewModel())
