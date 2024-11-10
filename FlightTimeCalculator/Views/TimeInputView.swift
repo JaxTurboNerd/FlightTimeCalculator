@@ -10,13 +10,13 @@ import SwiftUI
 struct TimeInputView: View {
     @Binding var timeInput: String
     @State private var showAlert = false
-    private let characterLimit = 4
     @State private var alertText = ""
     
+    //not being used:
     private var timeIsValid: Bool {
         //checks for valid double:
         let time = Double(timeInput) ?? 0.0
-        guard time < 99.9 else {
+        guard time < 100.0 else {
             alertText = "A flight time greater than 99.9 hours was entered! Please check your entry!"
             showAlert = true
             return false
