@@ -36,7 +36,7 @@ struct TimeInputView: View {
                 .font(.title) //may need to adjust to slightly smaller font
             TextField(" 0.0", text: $timeInput)
                 .textFieldStyle(.roundedBorder)
-                .frame(width: 60, height: 25)
+                .frame(width: 70, height: 25)
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
