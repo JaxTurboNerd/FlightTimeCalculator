@@ -50,7 +50,7 @@ struct ButtonView: View {
                 if !validTime {return}
                 //Function to calculate the times:
                 flightTimes.calculateTimes(flightTime: timeInput)
-                isFocused.toggle() //dismisses the keyboard
+                //isFocused.toggle() //dismisses the keyboard
             }
             .frame(width: 140, height: 45) //button size
             .font(.title3)

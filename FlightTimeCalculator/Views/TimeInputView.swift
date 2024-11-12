@@ -11,23 +11,7 @@ struct TimeInputView: View {
     @Binding var timeInput: String
     @State private var showAlert = false
     @State private var alertText = ""
-    
-    //not being used:
-    private var timeIsValid: Bool {
-        //checks for valid double:
-        let time = Double(timeInput) ?? 0.0
-        guard time < 100.0 else {
-            alertText = "A flight time greater than 99.9 hours was entered! Please check your entry!"
-            showAlert = true
-            return false
-        }
-        guard time >= 0.0 else {
-            alertText = "Please enter a value greater than 0.0"
-            showAlert = true
-            return false
-        }
-        return true
-    }
+    @FocusState.Binding var isFocused: Bool
     
     var body: some View {
         HStack{
@@ -39,8 +23,8 @@ struct TimeInputView: View {
                 .frame(width: 70, height: 25)
                 .foregroundStyle(Color("textColor"))
                 .keyboardType(.decimalPad)
+                .focused($isFocused)
                 .onChange(of: timeInput){newValue in
-                    //print(newValue.components(separatedBy: "."))
                     //Pretty sure the regex in the function does not work
                     //as intended.  Most of the validation is from the if
                     //statements below
@@ -88,5 +72,5 @@ struct TimeInputView: View {
 }
 
 #Preview {
-    TimeInputView(timeInput: .constant("0.0"))
+    TimeInputView(timeInput: .constant("0.0"), isFocused: FocusState<Bool>().projectedValue)
 }
