@@ -41,6 +41,9 @@ struct TimeInputView: View {
                 .keyboardType(.decimalPad)
                 .onChange(of: timeInput){newValue in
                     //print(newValue.components(separatedBy: "."))
+                    //Pretty sure the regex in the function does not work
+                    //as intended.  Most of the validation is from the if
+                    //statements below
                     if !isValidNumber(newValue) {
                         // Prefix sets the total allowed characters
                         timeInput = String(newValue.prefix(4).filter { $0.isNumber || $0 == "." })

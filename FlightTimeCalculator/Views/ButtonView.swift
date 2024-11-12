@@ -13,6 +13,25 @@ struct ButtonView: View {
     @ObservedObject var flightTimes: FlightTimesViewModel
     @Environment(\.colorScheme) var colorScheme
     @State private var showAlert = false
+    @State private var alertText = ""
+    
+    private var validTime: Bool{
+        let time = Double(timeInput) ?? 0
+        if timeInput == "" {
+            alertText = "Please enter your flight time."
+            showAlert = true
+            isFocused = true
+            return false
+        }
+        guard time < 100.0 else {
+            alertText = "Please enter a time less than 99.9"
+            showAlert = true
+            timeInput = ""
+            isFocused = true
+            return false
+        }
+        return true
+    }
     
     var body: some View {
         HStack(spacing: 50){
@@ -28,10 +47,7 @@ struct ButtonView: View {
             .cornerRadius(10)
             .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
             Button("Calculate") {
-                if timeInput == "" {
-                    showAlert = true
-                    return
-                }
+                if !validTime {return}
                 //Function to calculate the times:
                 flightTimes.calculateTimes(flightTime: timeInput)
                 isFocused.toggle() //dismisses the keyboard
@@ -43,7 +59,7 @@ struct ButtonView: View {
             .cornerRadius(10)
             .shadow(color: colorScheme == .light ? .gray : .clear, radius: 2, x: 2, y: 2)
         }
-        .alert("Please enter a flight time", isPresented: $showAlert){Button("OK", role: .cancel){}
+        .alert(alertText, isPresented: $showAlert){Button("OK", role: .cancel){}
         }
     }
 }
